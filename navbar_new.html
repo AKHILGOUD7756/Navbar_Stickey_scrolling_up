@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navbar Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .btn-contact {
+      background: #000;
+      color: #fff;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .btn-contact:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    /* Dropdown hover effect for desktop */
+    .dropdown-menu {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.25s ease-in-out;
+      margin-top: 0.5rem;
+    }
+    .nav-item.dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Accordion styling inside offcanvas */
+    .accordion-button {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #f8f9fa;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand ms-3" href="#">Monax</a>
+
+    <!-- Toggler (Offcanvas Button) -->
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+      <span class="bi bi-list fs-2"></span>
+    </button>
+
+    <!-- Normal Navbar Links (Desktop) -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <!-- Products Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#">Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Product 1</a></li>
+            <li><a class="dropdown-item" href="#">Product 2</a></li>
+            <li><a class="dropdown-item" href="#">Product 3</a></li>
+          </ul>
+        </li>
+
+        <!-- Compare Plans Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#">Compare Plans</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Plan A</a></li>
+            <li><a class="dropdown-item" href="#">Plan B</a></li>
+          </ul>
+        </li>
+
+        <!-- About Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+
+        <!-- Resources Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#">Resources</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Blog</a></li>
+            <li><a class="dropdown-item" href="#">Docs</a></li>
+            <li><a class="dropdown-item" href="#">Support</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact Button -->
+    <div class="d-none d-lg-block me-3">
+      <a href="#" class="btn btn-contact">Contact us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Menu (for Mobile) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Monax</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Accordion Instead of Dropdown -->
+    <div class="accordion" id="mobileMenuAccordion">
+      <!-- Products -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse">
+            Products
+          </button>
+        </h2>
+        <div id="productsCollapse" class="accordion-collapse collapse" data-bs-parent="#mobileMenuAccordion">
+          <div class="accordion-body p-0">
+            <ul class="list-unstyled mb-0">
+              <li><a class="dropdown-item" href="#">Product 1</a></li>
+              <li><a class="dropdown-item" href="#">Product 2</a></li>
+              <li><a class="dropdown-item" href="#">Product 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compare Plans -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#plansCollapse">
+            Compare Plans
+          </button>
+        </h2>
+        <div id="plansCollapse" class="accordion-collapse collapse" data-bs-parent="#mobileMenuAccordion">
+          <div class="accordion-body p-0">
+            <ul class="list-unstyled mb-0">
+              <li><a class="dropdown-item" href="#">Plan A</a></li>
+              <li><a class="dropdown-item" href="#">Plan B</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Us (no dropdown) -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <a class="accordion-button collapsed" href="#">About Us</a>
+        </h2>
+      </div>
+
+      <!-- Resources -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resourcesCollapse">
+            Resources
+          </button>
+        </h2>
+        <div id="resourcesCollapse" class="accordion-collapse collapse" data-bs-parent="#mobileMenuAccordion">
+          <div class="accordion-body p-0">
+            <ul class="list-unstyled mb-0">
+              <li><a class="dropdown-item" href="#">Blog</a></li>
+              <li><a class="dropdown-item" href="#">Docs</a></li>
+              <li><a class="dropdown-item" href="#">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Button in Offcanvas -->
+    <div class="mt-3">
+      <a href="#" class="btn btn-contact w-100">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
